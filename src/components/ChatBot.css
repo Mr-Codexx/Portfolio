@@ -1,0 +1,25 @@
+/* MyComponent.css */
+#container {
+    width: 320px;
+    height: 568px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -284px;
+    margin-left: -160px;
+    overflow: hidden;
+  }
+  
+  #container.details .list-view {
+    background: transparent;
+    transition: background 0.5s;
+    pointer-events: none;
+  }
+  
+  #container.details .list-view li {
+    transition: transform 0.3s, opacity 0.2s;
+  }
+  
+  /* Add more CSS rules here for the rest of the styling */
+  

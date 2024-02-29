@@ -1,0 +1,44 @@
+[
+  {
+    "name": "steve",
+    "email": "steve@gmail.com",
+    "bike": "Activa 5G",
+    "owner": "Sid"
+  },
+  {
+    "name": "James",
+    "email": "james@gmail.com",
+    "bike": "Duke",
+    "owner": "Sid"
+  },
+  {
+    "name": "Martin J",
+    "email": "martinj@gmail.com",
+    "bike": "Apache 160",
+    "owner": "Sid"
+  },
+  {
+    "name": "Hardwell",
+    "email": "hardwell@gmail.com",
+    "bike": "Pulsar 200",
+    "owner": "Sid"
+  },
+  {
+    "name": "Martin Garrix",
+    "email": "martin@gmail.com",
+    "bike": "Activa 5G",
+    "owner": "Sid"
+  },
+  {
+    "name": "David Guetta",
+    "email": "david@gmail.com",
+    "bike": "Avenger",
+    "owner": "Sid"
+  },
+  {
+    "name": "Steave Aoki",
+    "email": "steveaoki@gmail.com",
+    "bike": "Splender+",
+    "owner": "Sid"
+  }
+]

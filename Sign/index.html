@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Raleway:100,300);
+@keyframes calling {
+  from {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  to {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+@keyframes calling2 {
+  to {
+    border-color: red;
+  }
+}
+@keyframes declined {
+  to {
+    -webkit-filter: grayscale(0.1) blur(1px) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.7));
+    -moz-filter: grayscale(0.1) blur(1px) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.7));
+    opacity: 0.5;
+  }
+}
+@keyframes go {
+  0% {
+    opacity: 0.5;
+  }
+  95% {
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #B000DA;
+  font-family: "Raleway", sans-serif;
+}
+
+.call {
+  width: 300px;
+  height: 330px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: #9b00c1;
+}
+.call.is-declined {
+  animation: declined 0.4s forwards, go 0.3s 0.8s forwards;
+}
+.call.is-declined .circle {
+  background: rgba(255, 255, 255, 0.1);
+}
+.call.is-declined .user-photo__wrap, .call.is-declined .circle {
+  animation-play-state: paused;
+}
+.call.is-accepted header > h1 {
+  opacity: 0;
+}
+.call.is-accepted .circle {
+  opacity: 0;
+  animation-play-state: paused;
+}
+.call.is-accepted .user-photo__wrap {
+  border: none;
+  animation-play-state: paused;
+}
+.call.is-accepted .user-photo__wrap > img {
+  transform: scale(1.2);
+}
+
+header {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 2px;
+  background: #c500f4;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid #d10eff;
+  text-align: center;
+}
+header > h1 {
+  font-size: 1.2em;
+  text-shadow: 0px 1px 1px #444;
+  color: white;
+  font-weight: 100;
+}
+header .header-close {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  opacity: 0.4;
+  color: #72008e;
+  font-weight: 400;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+header .header-close:hover {
+  opacity: 1;
+}
+
+main {
+  height: 280px;
+  border: 1px solid #d528ff;
+  background-image: linear-gradient(#da41ff, #9b00c1);
+}
+
+.user {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.user-photo {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: #8700a7;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8), inset 1px 1px 1px rgba(0, 0, 0, 0.3), inset -1px -1px 1px rgba(0, 0, 0, 0.3), inset 2px 2px 1px rgba(0, 0, 0, 0.3), inset 1px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.user-photo__wrap {
+  background: #d10eff;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 5px solid #d10eff;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.6);
+  animation: calling2 1.3s linear infinite;
+}
+.user-photo__wrap > img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transition: transform 0.2s;
+}
+
+.user-name {
+  margin: 15px 0;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 1px 1px #444;
+}
+
+.status {
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+.status .circle {
+  float: left;
+  margin-right: 12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: calling 1s backwards infinite;
+}
+.status .circle:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.status .circle:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.status .circle:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.status .circle:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.status .circle:nth-child(5) {
+  animation-delay: 1s;
+}
+.status .circle.last {
+  margin-right: 0;
+}
+
+.buttons {
+  width: 90%;
+  margin: 20px auto;
+}
+.buttons .col {
+  width: 50%;
+  float: left;
+}
+.buttons .button {
+  margin: 0 auto;
+  width: 80%;
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  color: white;
+  text-decoration: none;
+}
+.buttons .button.-decline {
+  border-color: #FF0C21;
+  background: rgba(203, 0, 18, 0.14);
+}
+.buttons .button.-decline:hover {
+  background: #ff1126;
+}
+.buttons .button.-accept {
+  border-color: #69C915;
+  background: rgba(169, 228, 114, 0.12);
+}
+.buttons .button.-accept:hover {
+  background: #6bce15;
+}
+	</style>
+</head>
+<body>
+	<div class='call'>
+		<header>
+		  <h1>
+			Incoming Call
+		  </h1>
+		  <a class='header-close js-decline' href='@'>
+			X
+		  </a>
+		</header>
+		<main>
+		  <div class='user'>
+			<div class='user-photo'>
+			  <div class='user-photo__wrap'>
+				<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/4848/profile/profile-80.jpg?1'>
+			  </div>
+			</div>
+			<div class='user-name'>
+			  John Edwards
+			</div>
+		  </div>
+		  <div class='status'>
+			<div class='circle'></div>
+			<div class='circle'></div>
+			<div class='circle'></div>
+			<div class='circle'></div>
+			<div class='circle last'></div>
+		  </div>
+		  <div class='buttons'>
+			<div class='col'>
+			  <a class='button -decline js-decline' href='#'>
+				Decline
+			  </a>
+			</div>
+			<div class='col'>
+			  <a class='button -accept js-accept' href='#'>
+				Accept
+			  </a>
+			</div>
+		  </div>
+		</main>
+	  </div>
+	  <script>
+		(function() {
+  //inspired by http://www.sketchappsources.com/free-source/256-incoming-call-ui.html
+  $('.js-decline').on('click', function(e) {
+    $('.call').toggleClass('is-declined');
+    return e.preventDefault();
+  });
+
+  $('.js-accept').on('click', function(e) {
+    $('.call').toggleClass('is-accepted');
+    return e.preventDefault();
+  });
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiPGFub255bW91cz4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQWtGO0VBQUE7RUFDbEYsQ0FBQSxDQUFFLGFBQUYsQ0FBZ0IsQ0FBQyxFQUFqQixDQUFvQixPQUFwQixFQUE2QixRQUFBLENBQUMsQ0FBRCxDQUFBO0lBQzNCLENBQUEsQ0FBRSxPQUFGLENBQVUsQ0FBQyxXQUFYLENBQXVCLGFBQXZCO1dBQ0EsQ0FBQyxDQUFDLGNBQUYsQ0FBQTtFQUYyQixDQUE3Qjs7RUFJQSxDQUFBLENBQUUsWUFBRixDQUFlLENBQUMsRUFBaEIsQ0FBbUIsT0FBbkIsRUFBNEIsUUFBQSxDQUFDLENBQUQsQ0FBQTtJQUMxQixDQUFBLENBQUUsT0FBRixDQUFVLENBQUMsV0FBWCxDQUF1QixhQUF2QjtXQUNBLENBQUMsQ0FBQyxjQUFGLENBQUE7RUFGMEIsQ0FBNUI7QUFMa0YiLCJzb3VyY2VzQ29udGVudCI6WyIjaW5zcGlyZWQgYnkgaHR0cDovL3d3dy5za2V0Y2hhcHBzb3VyY2VzLmNvbS9mcmVlLXNvdXJjZS8yNTYtaW5jb21pbmctY2FsbC11aS5odG1sXG4kKCcuanMtZGVjbGluZScpLm9uICdjbGljaycsIChlKS0+XG4gICQoJy5jYWxsJykudG9nZ2xlQ2xhc3MoJ2lzLWRlY2xpbmVkJylcbiAgZS5wcmV2ZW50RGVmYXVsdCgpXG5cbiQoJy5qcy1hY2NlcHQnKS5vbiAnY2xpY2snLCAoZSktPlxuICAkKCcuY2FsbCcpLnRvZ2dsZUNsYXNzKCdpcy1hY2NlcHRlZCcpXG4gIGUucHJldmVudERlZmF1bHQoKSJdfQ==
+//# sourceURL=coffeescript
+	  </script>
+</body>
+</html>
