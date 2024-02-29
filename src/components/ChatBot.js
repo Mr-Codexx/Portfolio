@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from '../firebase/auth_check';
 import NoUser from '../components/Login/NoUser';
 import 'react-toastify/dist/ReactToastify.css';
+import './test.css'
+import MobileScreen from "./MobileScreen";
 
 const ChatBot = () => {
     const { currentUser } = useAuth();
+    
     const [showUserData, setShowUserData] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -17,7 +20,6 @@ const ChatBot = () => {
     useEffect(() => {
         setShowUserData(currentUser ? true : false);
     }, [currentUser]);
-
     useEffect(() => {
         const fetchData = async () => {
             const firebaseURL = 'https://chats-8a81f-default-rtdb.firebaseio.com/chats.json';
@@ -120,6 +122,7 @@ const ChatBot = () => {
                 <>
                     {currentUser ? (
                         <body className="welcome">
+                            <MobileScreen/>
                             <span id="splash-overlay" className="splash"></span>
                             <span id="welcome" className="z-depth-4"></span>
                             <main className="valign-wrapper">

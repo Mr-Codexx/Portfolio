@@ -1,7 +1,7 @@
 .container {
   height: 100%;
   min-height: 100vh;
-  width: 100%;
+  max-width: 100%;
   background: linear-gradient(to right, #9900ff, #cc80ff);
   display: flex;
   justify-content: center;
@@ -9,9 +9,8 @@
 }
 
 .innerBox {
-  min-width: 480px;
-  height: fit-content;
-  width: fit-content;
+  width: 90%; /* Adjusted width for better mobile responsiveness */
+  max-width: 480px; /* Maximum width for larger screens */
   background-color: #fff;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   padding: 30px;
@@ -67,4 +66,12 @@
   letter-spacing: 1px;
   font-size: 1rem;
   text-decoration: none;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 600px) {
+  .innerBox {
+    padding: 20px; /* Adjusted padding for smaller screens */
+    gap: 20px; /* Adjusted gap for smaller screens */
+  }
 }

@@ -15,3 +15,7 @@
     position: absolute;
   }
   
+.sidenav-overlay{
+  z-index: 99  !important;
+  position: relative;
+}

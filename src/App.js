@@ -53,7 +53,7 @@ function App() {
       </div>
       {/* Define Routes */}
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        {/* <Route exact path="/" element={<Home />} /> */}
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="*" element={<NoPage />}></Route>
@@ -62,7 +62,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Home name={userName} />} />
         <Route exact path="/bot" element={<ChatBot />} />
-        <Route exact path="/test" element={<Test />} />
+        <Route exact path="/Chat" element={<ChatBot />} />
         {/* Add routes for AdminDashboard and UserDashboard here */}
       </Routes>
       {/* Rest of your code */}

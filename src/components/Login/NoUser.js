@@ -1,56 +1,61 @@
-import { useState, useEffect } from "react";
-import Modal from 'react-modal';
-import React from "react";
-// import './Home.css'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
-    const [showUserData, setShowUserData] = useState(false);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showUserData, setShowUserData] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowUserData(true);
-        }, 2000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowUserData(true);
+    }, 2000);
 
-        return () => clearTimeout(timer);
-    }, []);
-    return (
+    return () => clearTimeout(timer);
+  }, []);
 
-        <body className="welcome">
+  const mainStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: showUserData ? 1 : 0,
+    transition: "opacity 2s",
+    transform: showUserData ? "translateY(0)" : "translateY(20px)",
+  };
 
-            <span id="splash-overlay" className="splash"></span>
-            <span id="welcome" className="z-depth-4"></span>
+  return (
+    <body className="welcome">
+      <span id="splash-overlay" className="splash"></span>
+      <span id="welcome" className="z-depth-4"></span>
 
-
-            <main className="valign-wrapper">
-                <h1> Login required....</h1>
-            </main>
-
-            <div className="fixed-action-btn">
-                <button onClick={() => setModalIsOpen(true)} className="btn btn-large btn-floating amber waves-effect waves-light">
-                    <i className="large material-icons">message</i>
-                </button>
+      <main style={mainStyle}>
+        <section>
+          <div className="recipe-container">
+            <div className="container"  style={mainStyle}>
+              <img src="https://cdn-icons-png.flaticon.com/128/2170/2170153.png" alt="login"></img>
             </div>
+            <h1> Sorry, Needs Login..</h1>
+            <h1>
+              <Link to="/Login" className="btn nav-link">
+                Login
+              </Link>
+            </h1>
 
-            <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                <div className="modal-content">
-                    <h4>Contact</h4>
-                    <p>coming soon...</p>
-                </div>
-                <div className="modal-footer">
-                    <button onClick={() => setModalIsOpen(false)} className="modal-action modal-close waves-effect btn-flat">close</button>
-                </div>
-            </Modal>
+            <div className="swiper">
+              <div className="swiper-scrollbar"></div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-            <footer className="page-footer deep-purple darken-3">
-                <div className="footer-copyright deep-purple darken-4">
-                    <div className="container">
-                        <time dateTime="{{ site.time | date: '%Y' }}">&copy; 2024 Sachin Sharma</time>
-                    </div>
-                </div>
-            </footer>
-        </body>
-    );
+      <footer className="page-footer deep-purple darken-3">
+        <div className="footer-copyright deep-purple darken-4">
+          <div className="container">
+            <time dateTime="{{ site.time | date: '%Y' }}">&copy; 2024 Sachin Sharma</time>
+          </div>
+        </div>
+      </footer>
+    </body>
+  );
 };
 
 export default Contact;

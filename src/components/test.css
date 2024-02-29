@@ -256,11 +256,10 @@ margin-bottom: 15px !important;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* Adjustments for smaller screens */
-  
-/* .contacts_card{
-  display: none;
-} */
 
+.chat-window{
+  content: 'Use Desktop';
+  display: none;
+}
 
 }

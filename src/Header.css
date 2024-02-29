@@ -9,3 +9,10 @@
 .navbar-fixed{
     position: relative;
 }
+
+.sidenav{
+    z-index: 99  !important;
+  }
+  .nav-link{
+    margin-left: 20px;
+  }

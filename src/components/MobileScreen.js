@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import React from "react";
-import './Home.css'
 import Register from '../firebase/UserRegistrationform'
 import { useAuth } from '../firebase/auth_check';
 import NoUser from '../components/Login/NoUser'
@@ -32,7 +31,7 @@ const Contact = () => {
                 <div >
                     {showUserData && (
                         <div className="center-align">
-                            <Register />
+                            <h1>Use Desktop Mode</h1>
                         </div>
                     )}
                 </div>
