@@ -122,7 +122,6 @@ const ChatBot = () => {
                 <>
                     {currentUser ? (
                         <body className="welcome">
-                            {/* <MobileScreen/> */}
                             <span id="splash-overlay" className="splash"></span>
                             <span id="welcome" className="z-depth-4"></span>
                             <main className="valign-wrapper">
