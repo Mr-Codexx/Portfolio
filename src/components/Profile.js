@@ -1,24 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Swiper from 'swiper';
 import './Profile.css'; // Assuming you have a CSS file for styling
+import Fake from '../Fake'
 
-function Project({ imgSrc, avatarSrc, name, author }) {
-  return (
-    <>
-    <div className="swiper-slide post">
-      <img className="post-img" src={imgSrc} alt="project" />
-      <div className="post-body">
-        <img className="post-avatar" src={avatarSrc} alt="avatar" />
-        <div className="post-detail">
-          <h2 className="post-name">{name}</h2>
-          <p className="post-author">{author}</p>
-        </div>
-      </div>
-    </div>
-    </>
-    
-  );
-}
+
 function Projects() {
   useEffect(() => {
     const postActionsControllers = document.querySelectorAll(".post-actions-controller");
@@ -138,45 +123,13 @@ function Projects() {
       <main className="valign-wrapper">
         <section className={`delayed-element ${showElement ? 'show' : ''}`}>
         {showElement && 
-          <div className="recipe-container">
-            <h1>Projects</h1>
             <div className="swiper">
               <div className="swiper-wrapper">
-                <Project
-                  imgSrc="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/defebc72-ea17-41c7-9bb6-70b3974a93b7"
-                  avatarSrc="https://sachinsharma2111.github.io/Home/favicon.png"
-                  name="WhatsApp Messages"
-                  author={author}
-                />
-                <Project
-                  imgSrc="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/defebc72-ea17-41c7-9bb6-70b3974a93b7"
-                  avatarSrc="https://sachinsharma2111.github.io/Home/favicon.png"
-                  name="Homemade Ice Cream"
-                  author={author}
-                />
-                <Project
-                  imgSrc="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/defebc72-ea17-41c7-9bb6-70b3974a93b7"
-                  avatarSrc="https://sachinsharma2111.github.io/Home/favicon.png"
-                  name="Homemade Ice Cream"
-                  author={author}
-                />
-                <Project
-                  imgSrc="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/defebc72-ea17-41c7-9bb6-70b3974a93b7"
-                  avatarSrc="https://sachinsharma2111.github.io/Home/favicon.png"
-                  name="Homemade Ice Cream"
-                  author={author}
-                />
-                <Project
-                  imgSrc="https://cdn.pixabay.com/photo/2017/03/19/03/51/material-icon-2155448_640.png"
-                  avatarSrc="https://sachinsharma2111.github.io/Home/favicon.png"
-                  name="Create"
-                  author={author}
-                />
+                <Fake/>
 
-              </div>
               <div className="swiper-scrollbar"></div>
             </div>
-          </div>
+              </div>
 }
         </section>
       </main>

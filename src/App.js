@@ -15,6 +15,7 @@ import { auth } from "./firebase";
 import ChatBot from "./components/ChatBot";
 import Test from "./components/Users"
 import './pages/Home.css';
+import Fake from './Fake'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,7 +43,7 @@ function App() {
   return (
     <>
     <Router>
-      <div className="App">
+      <div className="header">
         {/* Render Header Component */}
         <Header/>
       </div>
@@ -52,6 +53,7 @@ function App() {
         </button>
       </div>
       {/* Define Routes */}
+      <div className="main">
       <Routes>
         {/* <Route exact path="/" element={<Home />} /> */}
         <Route exact path="/about" element={<About />} />
@@ -63,8 +65,10 @@ function App() {
         <Route path="/" element={<Home name={userName} />} />
         <Route exact path="/bot" element={<ChatBot />} />
         <Route exact path="/Chat" element={<Test />} />
+        <Route exact path="/Fake" element={<Fake />} />
         {/* Add routes for AdminDashboard and UserDashboard here */}
       </Routes>
+      </div>
       {/* Rest of your code */}
     </Router>
     </>
