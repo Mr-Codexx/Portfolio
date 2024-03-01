@@ -62,7 +62,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Home name={userName} />} />
         <Route exact path="/bot" element={<ChatBot />} />
-        <Route exact path="/Chat" element={<ChatBot />} />
+        <Route exact path="/Chat" element={<Test />} />
         {/* Add routes for AdminDashboard and UserDashboard here */}
       </Routes>
       {/* Rest of your code */}
