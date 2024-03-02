@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Swiper from 'swiper';
 import './Profile.css'; // Assuming you have a CSS file for styling
 import Fake from '../Fake'
+import ProfileCard from '../ProfileCard';
 
 
 function Projects() {
@@ -125,7 +126,7 @@ function Projects() {
         {showElement && 
             <div className="swiper">
               <div className="swiper-wrapper">
-                <Fake/>
+                <ProfileCard/>
 
               <div className="swiper-scrollbar"></div>
             </div>

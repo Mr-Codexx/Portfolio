@@ -16,7 +16,7 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            console.log(user)
+            // console.log(user)
             if (user) {
                 // User is logged in
                 setUserName(user.displayName);
@@ -24,7 +24,7 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                 const emailParts = user.email.split('@');
                 if (emailParts.length === 2) {
                     const domain = emailParts[1];
-                    console.log('Email Domain:', domain);
+                    // console.log('Email Domain:', domain);
                     if(domain === 'prolifics.com'){
                         // alert('You are working in Prolifics')
                     }
@@ -55,8 +55,7 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
         }
     };
 
-    const isSachin = userName === "Sachin" || userName === "Sachin Sharma";
-
+    const isSachin = userName === "SuperUser" || userName === "Sachin Sharma";
     return (
         <header className="navbar-fixed">
             <nav className="row deep-purple darken-3">
@@ -80,7 +79,8 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                         <li><Link to="/contact" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Contact Us</Link></li>
                         <li><Link to="/Chat" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Chat</Link></li>
                         {isSachin && (
-                            <li><Link to="/Admin" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Admin Dashboard</Link></li>
+                            <li><Link to="/Dashboard" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Admin Dashboard</Link></li>
+                        
                         )}
                     </ul>
 

@@ -16,6 +16,9 @@ import ChatBot from "./components/ChatBot";
 import Test from "./components/Users"
 import './pages/Home.css';
 import Fake from './Fake'
+import ProfileCard from "./ProfileCard";
+import MessageViewer from "./Messages";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -66,6 +69,8 @@ function App() {
         <Route exact path="/bot" element={<ChatBot />} />
         <Route exact path="/Chat" element={<Test />} />
         <Route exact path="/Fake" element={<Fake />} />
+        <Route exact path="/Messages" element={<MessageViewer />} />
+        <Route exact path="/Dashboard" element={<Dashboard />} />
         {/* Add routes for AdminDashboard and UserDashboard here */}
       </Routes>
       </div>

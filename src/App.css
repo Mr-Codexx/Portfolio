@@ -2,6 +2,9 @@
     animation: writeSignature 4s linear forwards;
     opacity: 0;
   }
+  *{
+    transition: smooth;
+  }
   
   @keyframes writeSignature {
     0% {
@@ -22,7 +25,4 @@
 .header{
   position: absolute;
   top: 0;
-}
-.main{
-  
 }

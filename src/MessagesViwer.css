@@ -1,0 +1,39 @@
+    .card-body {
+      position: relative;
+      padding: 20px;
+      box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      border: 0;color: #fff; /* Text color */
+      background-color: #333;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Initial shadow */
+      transition: box-shadow 0.3s, background-color 0.3s; /* Transition effect for shadow and background color */
+      transition:  box-shadow 2s ease, background-color 2s ease; /* Transition effect for shadow and background color with 2 seconds duration */
+
+    }
+    .card-body {
+        opacity: 0;
+        transition: transform opacity 0.5s ease-in-out;
+    }
+    
+    .card-body.show {
+        opacity: 1;
+    }
+    
+    
+    .card-body:hover{
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.7); /* Neon shadow effect on hover */
+      background-color: #00ffff; /* Neon color on hover */    
+        background-color: green;
+        transition: box-shadow 2s ease, background-color 2s ease; /* Transition effect for shadow and background color with 2 seconds duration */
+
+        .name{
+            /* font-size: 20px; */
+                color:  #00b3ff;
+        }
+    }
+    .name{
+        font-size: larger;
+            color: rgb(81, 255, 0);
+    }
+    
