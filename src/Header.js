@@ -57,10 +57,10 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
 
     const isSachin = userName === "SuperUser" || userName === "Sachin Sharma";
     return (
-        <header className="navbar-fixed">
-            <nav className="row deep-purple darken-3">
+        <header className="nav-extended navbar-fixed">
+            <nav className="nav-wrapper row deep-purple darken-3">
                 <div className="col s12">
-                    <ul className="left hide-on-med-and-down"> {/* Hide on medium and small devices */}
+                    <ul className="nav-content left hide-on-med-and-down"> {/* Hide on medium and small devices */}
                         <li><Link to="/" className="btn nav-link">Home</Link></li>
                         <li><Link to="/about" className="btn nav-link">About Me</Link></li>
                         <li><Link to="/contact" className="btn nav-link">Contact Us</Link></li>
@@ -69,7 +69,7 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                         <li><Link to="/contact" className="nav-link">Contact Us</Link></li> */}
                         {/* Conditionally render admin dashboard link based on role */}
                         {isSachin && (
-                            <li><Link to="/Admin" className="nav-link">Admin Dashboard</Link></li>
+                            <li><Link to="/Dashboard" className="btn nav-link">Admin Dashboard</Link></li>
                         )}
                     </ul>
 
@@ -86,9 +86,9 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
 
                     <a href="#" data-target="mobile-nav" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 
-                    <ul className="right">
-                        <Bell count={notificationCount} />
-                        <span><img className="userIcon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"/> 
+                    <ul className="right pulse" >
+<Bell count={notificationCount} />
+                        <span><img className=" userIcon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"/> 
                         <b className="userName">{userName} </b></span>
                         <li className="right">
                             {/* Conditionally render login or logout button based on isLoggedIn state */}
