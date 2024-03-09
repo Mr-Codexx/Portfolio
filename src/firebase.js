@@ -17,11 +17,10 @@ export const logout = () => {
     return signOut(auth); // Sign out the user
   };  
 
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
-const auth = getAuth();
-
-export { app, auth, database};
-export default logout;
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app); // Pass the app instance to getAuth
+  
+  const database = getDatabase(app); // Initialize database after app initialization
+  
+  export { app, auth, database };
+  export default logout;

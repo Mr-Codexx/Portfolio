@@ -83,3 +83,43 @@
 .enb{
   z-index: 80 !important;
 }
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.notification.close {
+  display: none;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification-icon {
+  margin-right: 10px;
+}
+
+.notification-close-btn {
+  cursor: pointer;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+/* Add this to your CSS file */
+.modal {
+  border-radius: 10px; /* Adjust the border-radius as needed */
+}
+.modal-content{
+  min-height: 55vh !important;
+}

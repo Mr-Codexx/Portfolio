@@ -10,6 +10,7 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
 import Bell from './components/Bell';
 
 const Header = ({ isLoggedIn, role, handleLogin }) => {
+    const [isFullScreen, setIsFullScreen] = useState(false);
     const [userName, setUserName] = useState("");
     const navigate = useNavigate();
     const notificationCount = 3;
@@ -25,7 +26,7 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                 if (emailParts.length === 2) {
                     const domain = emailParts[1];
                     // console.log('Email Domain:', domain);
-                    if(domain === 'prolifics.com'){
+                    if (domain === 'prolifics.com') {
                         // alert('You are working in Prolifics')
                     }
                 } else {
@@ -54,7 +55,40 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
             console.error("Error logging out:", error);
         }
     };
+    // _____Full Screen_______________________________________________________
+    const handleSwitchToggle = () => {
+        setIsFullScreen(!isFullScreen);
+        if (!isFullScreen) {
+            openFullscreen();
+        } else {
+            closeFullscreen();
+        }
+    };
 
+    const openFullscreen = () => {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            // For Safari
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            // For IE
+            elem.msRequestFullscreen();
+        }
+    };
+
+    const closeFullscreen = () => {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            // For Safari
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            // For IE
+            document.msExitFullscreen();
+        }
+    };
     const isSachin = userName === "SuperUser" || userName === "Sachin Sharma";
     return (
         <header className="nav-extended navbar-fixed">
@@ -65,8 +99,17 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                         <li><Link to="/about" className="btn nav-link">About Me</Link></li>
                         <li><Link to="/contact" className="btn nav-link">Contact Us</Link></li>
                         <li><Link to="/Chat" className="btn nav-link">Chat</Link></li>
-                        {/* <li><Link to="/about" className="nav-link">About Me</Link></li>
-                        <li><Link to="/contact" className="nav-link">Contact Us</Link></li> */}
+                        <li>
+                            <div className="switch">
+                                <label>
+                                    Off
+                                    <input type="checkbox" checked={isFullScreen} onChange={handleSwitchToggle} />
+                                    <span className="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </li>
+                        {/* <li><Link to="/contact" className="nav-link">Contact Us</Link></li> */}
                         {/* Conditionally render admin dashboard link based on role */}
                         {isSachin && (
                             <li><Link to="/Dashboard" className="btn nav-link">Admin Dashboard</Link></li>
@@ -80,16 +123,18 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                         <li><Link to="/Chat" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Chat</Link></li>
                         {isSachin && (
                             <li><Link to="/Dashboard" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Admin Dashboard</Link></li>
-                        
+
                         )}
+                        
                     </ul>
 
                     <a href="#" data-target="mobile-nav" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 
                     <ul className="right pulse" >
-<Bell count={notificationCount} />
-                        <span><img className=" userIcon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"/> 
-                        <b className="userName">{userName} </b></span>
+
+                        <Bell count={notificationCount} />
+                        <span><img className=" userIcon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png" />
+                            <b className="userName">{userName} </b></span>
                         <li className="right">
                             {/* Conditionally render login or logout button based on isLoggedIn state */}
                             {userName ? (

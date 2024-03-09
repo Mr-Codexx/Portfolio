@@ -94,9 +94,7 @@ background-color: rgba(0,0,0,0.3) !important;
   border-radius: 10px !important;
   margin-bottom: 15px !important;
 }
-.active{
-  background-color: rgba(0,0,0,0.3);
-}
+
 .user_img{
   height: 60px;
   width: 60px;

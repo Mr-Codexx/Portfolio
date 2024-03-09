@@ -1,77 +1,19 @@
-.alert {
-    place-self: center;
-    transform: scale(0);
-    animation: scaleUp .35s 1s forwards linear;
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-  }
-  
-  .ball {
-    animation: ball 1s 2s forwards ease-out;
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-  }
-  
   .bell {
-    animation: bell .75s 2s forwards ease-out;
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
+      cursor: pointer;
+      background: none;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      padding: 4px;
+      height: 10px !important;
+      
   }
-  
-  @keyframes scaleUp {
-    60% {
-      transform: scale(1);
-    }
-    80% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
+  .bell:hover {
+      background: #fff;
   }
-  
-  @keyframes bell {
-    20% {
-      transform: rotate(5deg);
-    }
-    40% {
-      transform: rotate(-5deg);
-    }
-    60% {
-      transform: rotate(5deg);
-    }
-    80% {
-      transform: rotate(-5deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
+  .bell:active {
+      background: #0ff;
   }
-  
-  @keyframes ball {
-    20% {
-      transform: translate(20px, -4px);
-    }
-    30% {
-      transform: translate(0px);
-    }
-    40% {
-      transform: translate(-20px, -4px);
-    }
-    50% {
-      transform: translate(0px);
-    }
-    60% {
-      transform: translate(20px, -4px);
-    }
-    70% {
-      transform: translate(0px);
-    }
-    80% {
-      transform: translate(-20px, -4px);
-    }
-    100% {
-      transform: translate(0px);
-    }
+  .notification-bell {
+    margin-right: 10px;
+      position: relative;
   }
-  

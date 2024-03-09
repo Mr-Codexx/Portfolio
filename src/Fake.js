@@ -5,18 +5,23 @@ function App() {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    fetchData(); // Initial data fetch
+    const intervalId = setInterval(fetchData, 1000); // Fetch data every second
+
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
   }, []);
 
   const fetchData = () => {
     fetch('https://followers-ba029-default-rtdb.firebaseio.com/entries.json')
       .then(response => response.json())
       .then(data => {
-        const entriesArray = Object.keys(data).map(key => ({
-          id: key,
-          ...data[key]
-        }));
-        setDetails(entriesArray);
+        if (data) { // Check if data is not null or undefined
+          const entriesArray = Object.keys(data).map(key => ({
+            id: key,
+            ...data[key]
+          }));
+          setDetails(entriesArray);
+        }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
