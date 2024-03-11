@@ -63,7 +63,7 @@ function Login() {
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
-          placeholder="Enter Password"
+          placeholder="Enter Password" type="password"
         />
 
         <div className={styles.footer}>

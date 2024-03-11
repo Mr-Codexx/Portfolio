@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import { auth } from "./firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
@@ -94,11 +95,33 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
         <header className="nav-extended navbar-fixed">
             <nav className="nav-wrapper row deep-purple darken-3">
                 <div className="col s12">
-                    <ul className="nav-content left hide-on-med-and-down"> {/* Hide on medium and small devices */}
-                        <li><Link to="/" className="btn nav-link">Home</Link></li>
-                        <li><Link to="/about" className="btn nav-link">About Me</Link></li>
-                        <li><Link to="/contact" className="btn nav-link">Contact Us</Link></li>
-                        <li><Link to="/Chat" className="btn nav-link">Chat</Link></li>
+                    <ul className="nav-content navbar left hide-on-med-and-down"> {/* Hide on medium and small devices */}
+
+                    <li>
+        <NavLink exact to="/" className="btn nav-link" activeClassName="active">
+          <i className="material-icons">home</i>
+          <span>Home</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/about" className="btn nav-link" activeClassName="active">
+          <i className="material-icons">info</i>
+          <span>About Me</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact" className="btn nav-link" activeClassName="active">
+          <i className="material-icons">email</i>
+          <span>Contact</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/Chat" className="btn nav-link" activeClassName="active">
+          <i className="material-icons">chat</i>
+          <span>Chat</span>
+        </NavLink>
+      </li>
+
                         <li>
                             <div className="switch">
                                 <label>
@@ -117,16 +140,16 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                     </ul>
 
                     <ul className="sidenav" id="mobile-nav"> {/* For mobile navigation */}
-                        <li><Link to="/" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Home</Link></li>
-                        <li><Link to="/about" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>About Me</Link></li>
-                        <li><Link to="/contact" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Contact Us</Link></li>
-                        <li><Link to="/Chat" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Chat</Link></li>
+                        <li className="sidebar-logo"><h2>Sachin</h2></li>
+                        <li><Link to="/" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}><i className="material-icons white-text">home</i> Home</Link></li>
+                        <li><Link to="/about" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}><i className="material-icons white-text">info</i> About Me</Link></li>
+                        <li><Link to="/contact" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}><i className="material-icons white-text">contacts</i> Contact</Link></li>
+                        <li><Link to="/Chat" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}><i className="material-icons white-text">chat</i> Chat</Link></li>
                         {isSachin && (
-                            <li><Link to="/Dashboard" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}>Admin Dashboard</Link></li>
-
+                            <li><Link to="/Dashboard" className="nav-link" onClick={() => window.M.Sidenav.getInstance(document.querySelector('.sidenav')).close()}><i className="material-icons white-text">dashboard</i> Admin Dashboard</Link></li>
                         )}
-                        
                     </ul>
+
 
                     <a href="#" data-target="mobile-nav" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 

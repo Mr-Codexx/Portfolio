@@ -1,14 +1,15 @@
 import React from 'react'
 import M from "materialize-css";
+import NavigationLinks from '../TEST/Links';
 
 const ChatMessage = () => {
     const options = {
         // Add your modal options here
         onOpenStart: function () {
-            document.title = "Your Modal Title";
+            document.title = "Links";
         },
         onCloseEnd: function () {
-            document.title = "Your Original Title";
+            document.title = "Imp inks";
         }
     };
     return (
@@ -18,26 +19,7 @@ const ChatMessage = () => {
             </div>
 
             <div className="modal-content">
-                <p>Coming Soon..</p>
-
-                <div class="container">
-                <form className="col s12">
-                            <div className="row">
-                                <div className="input-field col s12">
-                                    <i className="material-icons prefix">textsms</i>
-                                    <input id="autocomplete-input" type="text" className="autocomplete" />
-                                    <label htmlFor="autocomplete-input">Any Suggestions</label>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <button className="btn waves-effect waves-light" type="submit">
-                                    Submit
-                                    <i className="material-icons right">send</i>
-                                </button>
-                            </div>
-                        </form>
-                </div>
-
+              <NavigationLinks/>
             </div>
 
             <div className="modal-footer fixed-action-btn">

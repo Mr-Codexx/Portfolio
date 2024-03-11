@@ -1,5 +1,5 @@
 /********* Root ********/
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,7 +8,7 @@
 
 
 /********* Wrapper ********/
-.wrapper{
+.wrapper {
     width: 100%;
     height: 100vh;
     /* background: url('../Images/Media\ \(5\).jfif'); */
@@ -22,39 +22,43 @@
         flex-direction: column;
     }
 }
+
 .social_icons_list {
     list-style-type: none;
     padding: 0;
     margin: 0;
     align-items: center;
     display: flex;
-  }
-  
-  .social_icons_list_item {
+}
+
+.social_icons_list_item {
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
-  }
-  
-  .social_icons_list_item i {
+}
+
+.social_icons_list_item i {
     font-size: 24px;
-  }
-  
-  .social_icons_list_item.active i {
-    color: #007bff; /* Change to your preferred active color */
-  }
-  
-  .social_icons_list_item:hover i {
-    color: #007bff; /* Change to your preferred hover color */
-  }
-  
-  .social_icons_list_item.active {
-    transform: translateZ(-5px) scale(1.2); /* Adjust as needed */
-  }
-  
+}
+
+.social_icons_list_item.active i {
+    color: #007bff;
+    /* Change to your preferred active color */
+}
+
+.social_icons_list_item:hover i {
+    color: #007bff;
+    /* Change to your preferred hover color */
+}
+
+.social_icons_list_item.active {
+    transform: translateZ(-5px) scale(1.2);
+    /* Adjust as needed */
+}
+
 
 /********* Left Menu ********/
 .left_menu {
-	position: absolute;
+    position: absolute;
     width: 10px;
     height: 100%;
     display: flex;
@@ -64,7 +68,7 @@
 }
 
 /********* Logo ********/
-.logo{
+.logo {
     background-color: #204b85;
     width: 100%;
     height: 100px;
@@ -74,9 +78,9 @@
 }
 
 /********* Social Icons ********/
-.social_icons_list{
+.social_icons_list {
     width: 100% !important;
-    display: flex !important ;
+    display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
@@ -103,16 +107,16 @@
     border-radius: 50%;
 }
 
-.icon{
+.icon {
     font-weight: 400;
     color: #204b85;
 }
 
-.icon:hover{
+.icon:hover {
     color: #57392a;
 }
 
-.nav{
+.nav {
     width: 100%;
     height: 100px;
 }
@@ -161,7 +165,7 @@
     top: 28%;
 }
 
-.large_text{
+.large_text {
     font-family: "Lato", sans-serif;
     font-size: 25px;
     text-transform: uppercase;
@@ -178,7 +182,7 @@
     padding: 2rem;
 }
 
-.blue_box_content{
+.blue_box_content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -186,7 +190,7 @@
     flex-direction: column;
 }
 
-.blue_box_content > span:nth-child(1) {
+.blue_box_content>span:nth-child(1) {
     font-size: 12px;
     background-color: #fff;
     width: 30px;
@@ -197,7 +201,7 @@
     margin-bottom: 5px;
 }
 
-.blue_box_content > span:nth-child(2) {
+.blue_box_content>span:nth-child(2) {
     font-size: 28px;
     color: rgb(243, 243, 243);
     text-transform: capitalize;
@@ -220,7 +224,7 @@
     transform: translateY(-3px);
 }
 
-.desc_content{
+.desc_content {
     position: absolute;
     width: 300px;
     height: 400px;
@@ -232,7 +236,7 @@
     justify-content: space-between;
 }
 
-.desc_content > p {
+.desc_content>p {
     font-family: "Lato", sans-serif;
     width: 230px;
     color: #57392a;
@@ -241,22 +245,25 @@
     line-height: 24px;
 }
 
-.desc_content > p > span {
+.desc_content>p>span {
     color: #204b85;
 }
 
-.fashion, .modelings {
+.fashion,
+.modelings {
     display: flex;
     flex-direction: column;
 }
 
-.fashion > span:nth-child(1), .modelings > span:nth-child(1) {
+.fashion>span:nth-child(1),
+.modelings>span:nth-child(1) {
     color: #204b85;
     margin-bottom: 7px;
     font-size: 14px;
 }
 
-.fashion > span:nth-child(2), .modelings > span:nth-child(2) {
+.fashion>span:nth-child(2),
+.modelings>span:nth-child(2) {
     font-size: 15px;
     font-weight: 600;
     color: #57392a;
@@ -285,11 +292,11 @@
     letter-spacing: 4px;
 }
 
-.slide > span:nth-child(1) {
+.slide>span:nth-child(1) {
     color: #ca4c48;
 }
 
-.slide > span:nth-child(2) {
+.slide>span:nth-child(2) {
     color: #204b85;
     font-size: 13px;
 }
@@ -300,61 +307,110 @@
     height: 100vh;
     background: rgb(0, 0, 0);
     z-index: 1;
-    background: linear-gradient(90deg,#eeb486 50%, #073776 50%, #204b85 100%);
+    background: linear-gradient(90deg, #eeb486 50%, #073776 50%, #204b85 100%);
     top: 0%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 @media screen and (max-width: 480px) {
     .wrapper {
         flex-direction: column;
     }
-	.left_menu {
-		position: absolute;
-		width: 10px;
-		height: 50%;
-		display: flex;
-		background-color: transparent;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-	.social_content{
-		margin-top: 120px;
-	}
-    .logo_circle img{
+
+    .left_menu {
+        position: absolute;
+        width: 10px;
+        height: 50%;
+        display: flex;
+        background-color: transparent;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .social_content {
+        margin-top: 120px;
+    }
+
+    .logo_circle img {
         width: 80px !important;
     }
-    .logo_circle{
+
+    .logo_circle {
         margin-top: -12em !important;
         width: 10%;
         margin-left: -100px;
     }
+
     .social_icons_list_item i {
         font-size: 14px;
     }
-    
+
     .social_icons_list_item.active {
-        width: 35px;
-        height: 35px;
+        width: 35px !important;
+        height: 35px !important;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 2px solid #57392a;
         border-radius: 50%;
     }
-    
+
 }
-.logo_circle{
+
+.logo_circle {
     margin-top: 12em;
     width: 10%;
 }
-.logo_circle img{
+
+.logo_circle img {
     width: 280px;
 }
-.page-footer{
+
+.page-footer {
     position: absolute !important;
     bottom: 0 !important;
     width: 100vw;
+}
+
+.right_menu {
+    position: fixed;
+    top: 2%;
+    right: 10%;
+}
+
+.right_menu .logo_circle img {
+    width: 450px;
+    height: 650px;
+    overflow: hidden;
+}
+
+.right_menu .logo .logo_circle img {
+    width: 100%;
+    height: auto;
+}
+
+/* Additional styles for responsiveness */
+@media screen and (max-width: 768px) {
+
+    .right_menu img {
+        position: static;
+        bottom: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    .right_menu {
+        position: fixed;
+        top: 62%;
+        right: 1%;
+    }
+
+    .right_menu .logo_circle img {
+        width: 290px !important;
+        height: 450px !important;
+        overflow: hidden;
+    }
 }

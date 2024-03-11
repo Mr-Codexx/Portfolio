@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import M from "materialize-css";
-import Home from "./pages/Home";
+import Home from "./pages/HomeNew";
 import About from "./components/Profile";
 import Contact from "./pages/Contact";
 import Header from "./Header"; // Import Header component
@@ -93,43 +93,44 @@ function App() {
   }, []);
 // ----------------------Full screen prompt--------------------------------------------
 
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  // const [isFullscreen, setIsFullscreen] = useState(false);
+  // useEffect(() => {
+  //   const fullscreenPromptShown = localStorage.getItem('fullscreenPromptShown');
+  //   Swal.fire({
+  //     title: 'Better Experience',
+  //     text: 'Do you want to enter fullscreen mode?',
+  //     icon: 'question',
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Yes',
+  //     cancelButtonText: 'No',
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       document.documentElement.requestFullscreen().then(() => {
+  //         setIsFullscreen(true);
+  //         localStorage.setItem('fullscreenPromptShown', 'true');
+  //       }).catch((err) => {
+  //         console.error('Failed to enter fullscreen mode: ', err);
+  //       });
+  //     }
+  //   });
+  // }, []); // Empty dependency array means this effect will only run once, on component mount
 
-  useEffect(() => {
-    Swal.fire({
-      title: 'Better Experience',
-      text: 'Do you want to enter fullscreen mode?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        document.documentElement.requestFullscreen().then(() => {
-          setIsFullscreen(true);
-        }).catch((err) => {
-          console.error('Failed to enter fullscreen mode: ', err);
-        });
-      }
-    });
-  }, []); // Empty dependency array means this effect will only run once, on component mount
-
-  const handleFullscreenToggle = () => {
-    // This function remains the same for handling subsequent toggles
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().then(() => {
-        setIsFullscreen(true);
-      }).catch((err) => {
-        console.error('Failed to enter fullscreen mode: ', err);
-      });
-    } else {
-      document.exitFullscreen().then(() => {
-        setIsFullscreen(false);
-      }).catch((err) => {
-        console.error('Failed to exit fullscreen mode: ', err);
-      });
-    }
-  };
+  // const handleFullscreenToggle = () => {
+  //   // This function remains the same for handling subsequent toggles
+  //   if (!document.fullscreenElement) {
+  //     document.documentElement.requestFullscreen().then(() => {
+  //       setIsFullscreen(true);
+  //     }).catch((err) => {
+  //       console.error('Failed to enter fullscreen mode: ', err);
+  //     });
+  //   } else {
+  //     document.exitFullscreen().then(() => {
+  //       setIsFullscreen(false);
+  //     }).catch((err) => {
+  //       console.error('Failed to exit fullscreen mode: ', err);
+  //     });
+  //   }
+  // };
   return (
     <>
       <Router>
