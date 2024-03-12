@@ -117,9 +117,50 @@ const NewsLetter = () => {
   };
 
   const handleDelete = async (id) => {
-    // Implementation for delete remains the same as before
+    Swal.fire({
+      title: 'Enter password',
+      input: 'password',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Remove',
+      showLoaderOnConfirm: true,
+      preConfirm: (password) => {
+        if (password === 'Remove') {
+          return Swal.fire({
+            title: 'Are you sure you want to delete this message?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              return fetch(`https://followers-ba029-default-rtdb.firebaseio.com/updates/${id}.json`, {
+                method: 'DELETE'
+              }).then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                toast.success('Message deleted successfully');
+                fetchData();
+              }).catch(error => {
+                console.error('Error deleting data:', error);
+                toast.error('Error occurred while deleting message');
+              });
+            }
+          });
+        } else {
+          return Swal.fire({
+            icon: 'error',
+            title: 'Incorrect password!',
+            text: 'Please enter correct password'
+          });
+        }
+      }
+    });
   };
-
   return (
     <div className="container">
       <h2>Contact Us</h2>

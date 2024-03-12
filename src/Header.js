@@ -9,6 +9,10 @@ import { logout } from "./auth"; // Import the logout function
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import Bell from './components/Bell';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import 'materialize-css/dist/css/materialize.min.css';
+import NotificationBell from "./TEST/testBell";
+import { color } from "framer-motion";
 
 const Header = ({ isLoggedIn, role, handleLogin }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -91,36 +95,106 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
         }
     };
     const isSachin = userName === "SuperUser" || userName === "Sachin Sharma";
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [updates, setUpdates] = useState([]);
+
+    useEffect(() => {
+        M.Modal.init(document.querySelectorAll('.modal'), { inDuration: 300, outDuration: 200 });
+    }, []); // Initialize modal on component mount
+
+    const openModal = () => {
+        setIsOpen(true);
+        fetchData();
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+    
+    const fetchData = () => {
+        fetch('https://followers-ba029-default-rtdb.firebaseio.com/updates.json')
+            .then(response => response.json())
+            .then(data => {
+                if (typeof data === 'object' && data !== null) {
+                    const notifications = Object.keys(data).map(key => {
+                        const timestamp = data[key].timestamp;
+                        const formattedTime = formatTime(timestamp);
+                        return {
+                            id: key,
+                            message: data[key].message,
+                            userDetails: data[key].userDetails,
+                            time: formattedTime,
+                        };
+                    });
+    
+                    // Print timestamp for each notification
+                    notifications.forEach(notification => {
+                        console.log(`Timestamp for notification with ID ${notification.id}: ${notification.time}`);
+                    });
+    
+                    setUpdates(notifications);
+                } else {
+                    console.error('Data fetched is not an object:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    };
+    
+    const formatTime = (timestamp) => {
+        if (!timestamp) {
+            return "No timestamp available";
+        }
+    
+        const date = new Date(timestamp);
+        if (isNaN(date.getTime())) {
+            return "Invalid timestamp";
+        }
+    
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = monthNames[date.getMonth()]; // Extract month name
+    
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+    
+        const formattedMonth = month; // Use dynamic month
+        const formattedHours = hours < 10 ? '0' + hours : hours; // Pad hours with zero if necessary
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes; // Pad minutes with zero if necessary
+    
+        return `${formattedMonth}:${formattedHours} ${date.getDate()}th ${formattedMinutes}th`;
+    };
+    
+    
     return (
         <header className="nav-extended navbar-fixed">
             <nav className="nav-wrapper row deep-purple darken-3">
                 <div className="col s12">
                     <ul className="nav-content navbar left hide-on-med-and-down"> {/* Hide on medium and small devices */}
 
-                    <li>
-        <NavLink exact to="/" className="btn nav-link" activeClassName="active">
-          <i className="material-icons">home</i>
-          <span>Home</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/about" className="btn nav-link" activeClassName="active">
-          <i className="material-icons">info</i>
-          <span>About Me</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/contact" className="btn nav-link" activeClassName="active">
-          <i className="material-icons">email</i>
-          <span>Contact</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/Chat" className="btn nav-link" activeClassName="active">
-          <i className="material-icons">chat</i>
-          <span>Chat</span>
-        </NavLink>
-      </li>
+                        <li>
+                            <NavLink exact to="/" className="btn nav-link" activeClassName="active">
+                                <i className="material-icons">home</i>
+                                <span>Home</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about" className="btn nav-link" activeClassName="active">
+                                <i className="material-icons">info</i>
+                                <span>About Me</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/contact" className="btn nav-link" activeClassName="active">
+                                <i className="material-icons">email</i>
+                                <span>Contact</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/Chat" className="btn nav-link" activeClassName="active">
+                                <i className="material-icons">chat</i>
+                                <span>Chat</span>
+                            </NavLink>
+                        </li>
 
                         <li>
                             <div className="switch">
@@ -154,8 +228,9 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                     <a href="#" data-target="mobile-nav" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 
                     <ul className="right pulse" >
-
-                        <Bell count={notificationCount} />
+                        <li className="bellicon" onClick={openModal} >
+                            <NotificationBell />
+                        </li>
                         <span><img className=" userIcon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png" />
                             <b className="userName">{userName} </b></span>
                         <li className="right">
@@ -172,6 +247,47 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                     </ul>
                 </div>
             </nav>
+            <div>
+
+                {/* _______________________________Notification modal_______________________________ */}
+                <div id="notifications" className={`modal ${isOpen ? 'open' : ''}`}>
+                    <div className="row">
+                        <div className="col s12 m6">
+                            <div className="card blue-grey darken-1">
+                                <div className="card-content white-text">
+                                    <span className="card-title">Notifications</span>
+                                    <div className="container-notifications">
+                                        {updates.map((notification) => (
+                                            <p key={notification.id} className="container">
+                                                <div className="messageTab">
+                                                    <i className="material-icons">message</i>   {notification.message}
+                                                </div>
+                                                <div className="sender">
+                                                    <label>From:</label>
+                                                    <i className="material-icons" style={{ color: 'orange' }}>person</i>
+                                                    <label style={{ color: 'orange' }}>{notification.userDetails.userName}</label>
+
+                                                    <label style={{ color: 'orange' }}>{notification.userDetails.timestamp}</label> 
+                                                    <label className="time"> {notification.time}</label>
+                                                </div>
+                                                <hr />
+
+                                            </p>
+                                        ))}
+                                    </div>
+                                </div>
+                                {/* <div className="card-action">
+                                    <a href="#">Marked as unread</a>
+                                    <a href="#">Delete</a>
+                                </div> */}
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button onClick={closeModal} className="modal-close waves-effect waves-green btn-flat">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
     );
 };

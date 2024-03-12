@@ -1,14 +1,17 @@
-.userIcon{
-    width: 40px;
+.userIcon {
+  width: 40px;
 }
-.userName{
-    margin-right: 20px;
-    color: red;
-    font-size: 20px;
+
+.userName {
+  margin-right: 20px;
+  color: red;
+  font-size: 20px;
 }
-.navbar-fixed{
-    position: relative;
+
+.navbar-fixed {
+  position: relative;
 }
+
 .navbar .btn.nav-link i {
   display: inline-block;
 }
@@ -34,47 +37,135 @@
 }
 
 .navbar .btn.nav-link.active {
-  color: #29fc5087; /* Change color for active button */
+  color: #29fc5087;
+  /* Change color for active button */
   font-weight: bolder;
   background-color: white;
 }
 
-.sidenav{
-    z-index: 99  !important;
+.sidenav {
+  z-index: 99 !important;
+}
+
+.nav-link {
+  margin-left: 20px;
+}
+
+.sidenav {
+  padding: 30px 0;
+  background: rgba(6, 42, 104, 0.72);
+}
+
+.sidenav h2 {
+  color: #fff;
+  padding: 0 32px;
+  font-weight: 300;
+  font-size: 2.5em;
+}
+
+.sidenav li a {
+  padding: 10px 32px !important;
+  height: auto;
+  color: #fff;
+  animation: ripple 0.5s linear;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.link:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes ripple {
+  100% {
+    transform: scale(2);
+    opacity: 0;
   }
-  .nav-link{
-    margin-left: 20px;
+}
+
+.bellicon .ball {
+  width: 30px !important;
+  height: 12px !important;
+  color: green;
+}
+
+.bellicon {
+  width: 40px !important;
+  color: green;
+}
+
+.bellicon {
+  width: 50px !important;
+  color: green;
+  cursor: pointer;
+}
+
+.container-notifications {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Increased spacing between notifications */
+}
+.messageTab {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-bottom: 5px; /* Add space below each messageTab */
+}
+
+.messageTab i {
+  margin-right: 15px; /* Add space between the icon and the message */
+}
+
+
+.sender {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Add some space above the sender info */
+}
+
+.sender label {
+  margin-right: 10px; /* Increased spacing between labels */
+}
+
+.time {
+  margin-left: auto; /* Push the time to the right */
+  margin-right: 10px; /* Add some space on the right of the time */
+}
+
+/* Media query for screens smaller than 768px (typical mobile screens) */
+@media screen and (max-width: 768px) {
+  .container {
+    margin-bottom: 10px; /* Decreased spacing for smaller screens */
   }
-  .sidenav {
-    padding: 30px 0;
-    background: rgba(6, 42, 104, 0.72);
+
+  .sender {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start */
   }
-  .sidenav h2 {
-    color: #fff;
-    padding: 0 32px;
-    font-weight: 300;
-    font-size: 2.5em;
+
+  .sender label {
+    margin-bottom: 5px; /* Add some space between labels */
+    margin-right: 0; /* Remove right margin for labels */
   }
-  .sidenav li a {
-    padding: 10px 32px !important;
-    height: auto;
-    color: #fff;
-    animation: ripple 0.5s linear;
+
+  .time {
+    margin-left: 0; /* Reset margin for time */
+    margin-top: 5px; /* Add some space above time */
   }
-  
-  .nav-link {
-    display: inline-block;
-    padding: 0 20px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  .link:hover {
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  @keyframes ripple {
-    100% {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
+}
+#notifications {
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.container-notifications {
+  max-height: 300px; /* Set maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling within the container */
+}
+

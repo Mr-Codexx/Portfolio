@@ -1,9 +1,29 @@
-import React from 'react';
-import './test.css'
+import React, { useState, useEffect } from 'react';
 
 const NotificationBell = () => {
+  const [data, setData] = useState(null);
+  const [dataLength, setDataLength] = useState(0);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://followers-ba029-default-rtdb.firebaseio.com/updates.json');
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+      const length = jsonData ? Object.keys(jsonData).length : 0;
+      setDataLength(length);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
   const handleClick = (notificationCount) => {
-    // Handle button click based on notificationCount
     alert(`${notificationCount} notifications clicked`);
   };
 
@@ -12,8 +32,8 @@ const NotificationBell = () => {
       element: document.querySelector(".notification-bell"),
       badgeColor: "steelblue",
       badgeTextColor: "#fff",
-      ballColor: "#000",
-      bellColor: "#000",
+      ballColor: "#fad900",
+      bellColor: "#FFD700", 
       outlineWidth: 10,
       ringSpeed: 400,
       title: `${num} notifications!`,
@@ -22,7 +42,6 @@ const NotificationBell = () => {
     const n = Object.assign(defaultProperties, properties);
     let notification = n.element;
     notification.title = `${num} notifications!`;
-    // remove any old svgs
     while (notification.firstChild) {
       notification.removeChild(notification.firstChild);
     }
@@ -49,18 +68,14 @@ const NotificationBell = () => {
     notification.appendChild(fc);
   }
 
-  // use the notify function to populate a container of fixed height and width with a bell
   React.useEffect(() => {
-    notify(2); // Default notification count
-  }, []);
-  
-  
+    notify(dataLength); // Use dataLength as notification count
+  }, [dataLength]); // Run effect whenever dataLength changes
+
   return (
     <div className="notification-bell">
-      {/* Your SVG code here */}
-
       <button className="notify2" onClick={() => handleClick(8)}>2 notifications</button>
-      <br />
+      <br />      
       <button className="notify6" onClick={() => handleClick(6)}>6 notifications</button>
       <br />
       {/* Other buttons */}

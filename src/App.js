@@ -22,6 +22,7 @@ import Notification from "./Notification/Notification";
 import TestFolder from "./TEST/test";
 import ChatMessage from "./ChatBot/ChatMessage";
 import Swal from "sweetalert2";
+import NewsLetter from "./pages/SendNewsLetter";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -162,7 +163,8 @@ function App() {
             <Route exact path="/Dashboard" element={<Dashboard />} />
             <Route exact path="/Portfolio" element={<RedirectPage />} />
             <Route exact path="/Notification" element={<Notification />} />            
-            <Route exact path="/test" element={<TestFolder />} />
+            <Route exact path="/test" element={<TestFolder />} />         
+            <Route exact path="/news" element={<NewsLetter />} />
             {/* Add routes for AdminDashboard and UserDashboard here */}
           </Routes>
         </div>
