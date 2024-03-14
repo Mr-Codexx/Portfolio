@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-// import './styles.css'; // Import your custom CSS file
 
 const NewsLetter = () => {
   const [formData, setFormData] = useState({
@@ -105,13 +104,13 @@ const NewsLetter = () => {
       toast.error('Error occurred while sending message');
     }
   };
-  
+
 
   const handleEdit = (update) => {
     setEditMode(true);
     setEditId(update.id);
     setFormData({
-      userName: update.userDetails.userName,
+      userName: update.userDetails ? update.userDetails.userName : '',
       message: update.message
     });
   };
@@ -210,22 +209,36 @@ const NewsLetter = () => {
           <tbody>
             {updates.map((update) => (
               <tr key={update.id}>
-                <td>{update.userDetails.userName}</td>
+                <td>{update.userDetails ? update.userDetails.userName : 'Unknown'}</td>
                 <td>{update.message}</td>
                 <td>{update.timestamp}</td>
                 <td>
                   <button
-                    className="btn waves-effect waves-light"
+                    className="btn waves-effect waves-light hide-on-med-and-up"
                     onClick={() => handleEdit(update)}
                   >
                     Edit
                   </button>
                   <button
-                    className="btn waves-effect waves-light red"
+                    className="btn waves-effect waves-light red hide-on-med-and-up"
                     onClick={() => handleDelete(update.id)}
                   >
                     Delete
                   </button>
+
+                  <button
+                    className="btn waves-effect waves-light hide-on-small-only"
+                    onClick={() => handleEdit(update)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn waves-effect waves-light red hide-on-small-only"
+                    onClick={() => handleDelete(update.id)}
+                  >
+                    Delete
+                  </button>
+
                 </td>
               </tr>
             ))}

@@ -97,8 +97,6 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
     const isSachin = userName === "SuperUser" || userName === "Sachin Sharma";
 
     const [isOpen, setIsOpen] = useState(false);
-    const [updates, setUpdates] = useState([]);
-
     useEffect(() => {
         M.Modal.init(document.querySelectorAll('.modal'), { inDuration: 300, outDuration: 200 });
     }, []); // Initialize modal on component mount
@@ -164,7 +162,63 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
         return `${formattedMonth}:${formattedHours} ${date.getDate()}th ${formattedMinutes}th`;
     };
     
+    // ______________________web_Notification_________________________________________________
+    const [notificationPermission, setNotificationPermission] = useState(Notification.permission);
+    const [updates, setUpdates] = useState([]);
     
+    useEffect(() => {
+      if (notificationPermission !== 'granted') {
+        Notification.requestPermission().then(permission => {
+          setNotificationPermission(permission);
+        });
+      }
+    }, [notificationPermission]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const firebaseURL = 'https://followers-ba029-default-rtdb.firebaseio.com/updates.json';
+        try {
+          const response = await fetch(firebaseURL);
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          const updatesArray = Object.entries(data).map(([id, value]) => ({ id, ...value }));
+          setUpdates(updatesArray);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData(); // Initial fetch
+  
+      const interval = setInterval(() => {
+        fetchData(); // Fetch data every second
+      }, 1000);
+  
+      // Cleanup function
+      return () => clearInterval(interval);
+    }, []);
+  
+    useEffect(() => {
+      // Check for new updates and trigger notification if any
+      if (notificationPermission === 'granted' && updates.length > 0) {
+        const storedUpdates = JSON.parse(localStorage.getItem('storedUpdates')) || [];
+        const latestUpdate = updates[0]; // Assuming updates are sorted with the latest at index 0
+        if (!storedUpdates.includes(latestUpdate.id)) {
+          const { userName } = latestUpdate.userDetails;
+          const { message } = latestUpdate;
+          new Notification('New Update', {
+            body: `Form: ${userName}\nMessage: ${message}`,
+            icon: 'https://cdn-icons-png.flaticon.com/512/3119/3119338.png' // Provide the path to your icon
+          });
+          localStorage.setItem('storedUpdates', JSON.stringify([...storedUpdates, latestUpdate.id]));
+          // console.log('Latest Update:', latestUpdate);
+        }
+      }
+    }, [updates, notificationPermission]);
+    
+  
     return (
         <header className="nav-extended navbar-fixed">
             <nav className="nav-wrapper row deep-purple darken-3">
@@ -260,7 +314,8 @@ const Header = ({ isLoggedIn, role, handleLogin }) => {
                                         {updates.map((notification) => (
                                             <p key={notification.id} className="container">
                                                 <div className="messageTab">
-                                                    <i className="material-icons">message</i>   {notification.message}
+                                                    <i className="material-icons">message</i>   {notification.message} 
+                                                     {/* <i className="material-icons" style={{color:'orange'}}>delete</i> */}
                                                 </div>
                                                 <div className="sender">
                                                     <label>From:</label>

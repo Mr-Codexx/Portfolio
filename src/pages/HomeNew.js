@@ -122,39 +122,50 @@ const PortfolioPage = () => {
             </section>
             {/*===== SOCIAL ICONS =====*/}
             <section className="social_content">
-              <ul className="social_icons_list">
-                <li
-                  className={`social_icons_list_item ${activeButton === 0 ? 'active' : ''}`}
-                  onClick={() => activateButton(0)}
-                >
-                  <i className="fa fa-facebook icon"></i>
-                </li>
-                <li
-                  className={`social_icons_list_item ${activeButton === 1 ? 'active' : ''}`}
-                  onClick={() => activateButton(1)}
-                >
-                  <i className="fa fa-whatsapp icon"></i>
-                </li>
-                <li
-                  className={`social_icons_list_item ${activeButton === 2 ? 'active' : ''}`}
-                  onClick={() => activateButton(2)}
-                >
-                  <i className="fa fa-instagram icon"></i>
-                </li>
-                <li
-                  className={`social_icons_list_item ${activeButton === 3 ? 'active' : ''}`}
-                  onClick={() => activateButton(3)}
-                >
-                  <i className="fa fa-twitter icon"></i>
-                </li>
-                <li
-                  className={`social_icons_list_item ${activeButton === 4 ? 'active' : ''}`}
-                  onClick={() => activateButton(4)}
-                >
-                  <i className="fa fa-linkedin icon"></i>
-                </li>
-              </ul>
-            </section>
+  <ul className="social_icons_list">
+    <li
+      className={`social_icons_list_item ${activeButton === 0 ? 'active' : ''}`}
+      onClick={() => activateButton(0)}
+    >
+      <a href="https://www.facebook.com/sachinsharma.may" target="_blank">
+        <i className="fa fa-facebook icon"></i>
+      </a>
+    </li>
+    <li
+      className={`social_icons_list_item ${activeButton === 1 ? 'active' : ''}`}
+      onClick={() => activateButton(1)}
+    >
+      <a href="https://wa.me/917906310812?text=Hi%20Mr.%20Sachin%20Sharma,%20I%20am%20sending%20you%20this%20message!! **from_new_website** !!!" target="_blank">
+        <i className="fa fa-whatsapp icon"></i>
+      </a>
+    </li>
+    <li
+      className={`social_icons_list_item ${activeButton === 2 ? 'active' : ''}`}
+      onClick={() => activateButton(2)}
+    >
+      <a href="https://www.instagram.com/official.sachinsharma" target="_blank">
+        <i className="fa fa-instagram icon"></i>
+      </a>
+    </li>
+    <li
+      className={`social_icons_list_item ${activeButton === 3 ? 'active' : ''}`}
+      onClick={() => activateButton(3)}
+    >
+      <a href="https://twitter.com" target="_blank">
+        <i className="fa fa-twitter icon"></i>
+      </a>
+    </li>
+    <li
+      className={`social_icons_list_item ${activeButton === 4 ? 'active' : ''}`}
+      onClick={() => activateButton(4)}
+    >
+      <a href="https://www.linkedin.com/in/mr-sachinsharma" target="_blank">
+        <i className="fa fa-linkedin icon"></i>
+      </a>
+    </li>
+  </ul>
+</section>
+
           </main>
           <main className="right_menu">
               <div className="">
